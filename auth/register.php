@@ -1,38 +1,25 @@
 
+<?php require "../config/config.php"; ?>
+<?php require "../libs/App.php"; ?>
+<?php require "../includes/header.php"; ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="path/to/your/styles.css"> <!-- Update with your CSS path -->
-</head>
-<body>
-    <div class="container">
-        <h2>Register</h2>
-        <form action="register_process.php" method="POST">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+<div class="register-container">
+        <h5 class="register-title">Register</h5>
+        <h2>Register for a new user</h2>
+        <form>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Username" required>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Your Email" required>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+            <div class="mb-3">
+                <input type="password" class="form-control" placeholder="Password" required>
             </div>
-            <div class="form-group">
-                <label for="confirm_password">Confirm Password:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
-            </div>
-            <button type="submit">Register</button>
+            <button type="submit" class="btn btn-custom w-100">REGISTER</button>
         </form>
     </div>
-</body>
-</html>
 
-<?php require "includes/footer.php"; ?>
+<?php require "../includes/footer.php"; ?>
+
+

@@ -477,3 +477,45 @@
     padding-right: 0;
     border-right: none;
 }
+
+/* register */
+
+body {
+    background-color: #f0f0f0;
+}
+
+.register-container {
+    width: 60%;;
+    margin: 50px auto;
+    background-color: #0d1b2a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.register-container label {
+    color: #fff;
+}
+
+.register-container .form-control {
+    background-color: #f0f0f0;
+}
+
+.btn-custom {
+    background-color: #fcbf49;
+    color: #fff;
+}
+
+.btn-custom:hover {
+    background-color: #f77f00;
+}
+
+.register-title {
+    color: #fcbf49;
+    font-weight: bold;
+}
