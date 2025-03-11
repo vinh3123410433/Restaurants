@@ -1,6 +1,6 @@
 
-<?php require "../config/config.php"; ?>
-<?php require "../libs/App.php"; ?>
+<?php require "config/config.php"; ?>
+<?php require "libs/App.php"; ?>
 <?php require "includes/header.php"; ?>
 
 
@@ -674,5 +674,5 @@
         <!-- Testimonial End -->
         
 
-<?php require "./includes/footer.php"; ?>
+<?php require "includes/footer.php"; ?>
        

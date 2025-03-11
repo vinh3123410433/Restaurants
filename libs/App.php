@@ -8,30 +8,31 @@
         public $pass = PASS;
         
 
-        public $link;
+        public $pdo;
 
 
         //create a construct
 
         public function __construct() {
-            $this->connect();
+            require "../config/config.php";
+            $this-> pdo = $pdo;
         }
 
 
         public function connect() {
             $this->link = new PDO("mysql:host=$this->host; mdbname=$this->dbname", $this->user, $this->pass);
 
-            if($this->link) {
-                echo "Connected";
-            } else {
-                echo "Not Connected";
-            }
+            // if($this->link) {
+            //     echo "Connected";
+            // } else {
+            //     echo "Not Connected";
+            // }
         }
 
         //selecta all
 
         public function selectAll($query) {
-            $rows = $this->link->query($query);
+            $rows = $this->pdo->query($query);
             $rows->execute();
 
             $allRows = $rows->fetchAll(PDO::FETCH_OBJ);
@@ -44,7 +45,7 @@
         }
 
         public function selectOne($query) {
-            $rows = $this->link->query($query);
+            $rows = $this->pdo->query($query);
             $rows->execute();
 
             $singleRows = $rows->fetch(PDO::FETCH_OBJ);
@@ -62,7 +63,7 @@
             if($this->validate($arr) == "empty"){
                 echo "<script>alert('one or more inputs are empty')</script>";
             }else{
-                $insest_record = $this->link->prepare($query);
+                $insest_record = $this->pdo->prepare($query);
                 $insest_record->execute($arr);
 
                 header("location: ".$path."");
@@ -75,7 +76,7 @@
             if($this->validate($arr) == "empty"){
                 echo "<script>alert('one or more inputs are empty')</script>";
             }else{
-                $update_record = $this->link->prepare($query);
+                $update_record = $this->pdo->prepare($query);
                 $update_record->execute($arr);
 
                 header("location: ".$path."");
@@ -85,7 +86,7 @@
 
         //delete query
         public function delete($query, $path) {
-            $delete_record = $this->link->prepare($query);
+            $delete_record = $this->pdo->prepare($query);
             $delete_record->execute();
 
             header("location: ".$path."");
@@ -101,20 +102,22 @@
 
 
         public function register($query, $arr, $path) {
-            if($this->validate($arr) == "empty"){
-                echo "<script>alert('one or more inputs are empty')</script>";
-            }else{
-                $register_user = $this->link->prepare($query);
-                $register_user->execute($arr);
-
-                header("location: ".$path."");
+            try {
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute($arr);
+                header("Location: " . $path);
+                exit();
+            } catch (PDOException $e) {
+                throw new Exception("Database error: " . $e->getMessage());
             }
         }
+
+
 
         public function login($query, $data, $path) {
             //email
 
-            $login_user = $this->link->query($query);
+            $login_user = $this->pdo->query($query);
             $login_user->execute();
 
             $fetch = $login_user->fetch(PDO::FETCH_OBJ);
