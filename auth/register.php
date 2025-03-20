@@ -1,6 +1,6 @@
 
-<?php require "../libs/App.php"; ?>
-<?php //require "../includes/header.php"; ?>
+<?php require (__DIR__ ."/../libs/App.php"); ?>
+<?php require (__DIR__ ."/../includes/header.php"); ?>
 <?php 
 
     $app = new App;

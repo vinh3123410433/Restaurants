@@ -1,4 +1,4 @@
-<?php require "../config/config.php"; ?>
+<?php require (__DIR__ ."/../config/config.php"); ?>
 
 <?php
     class App {
@@ -14,8 +14,8 @@
         //create a construct
 
         public function __construct() {
-            require "../config/config.php";
-            $this-> pdo = $pdo;
+            $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->user, $this->pass);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
 
 
@@ -120,18 +120,25 @@
             $login_user = $this->pdo->query($query);
             $login_user->execute();
 
-            $fetch = $login_user->fetch(PDO::FETCH_OBJ);
+            $fetch = $login_user->fetch(PDO::FETCH_ASSOC);
 
             if($login_user->rowCount() > 0){
+                
                 if(password_verify($data['password'], $fetch['password'])){
                     //start session variables
-                    header("location: ".$path."");
+
+                    $_SESSION['email'] = $fetch['email'];
+                    $_SESSION['username'] = $fetch['username'];
+                    $_SESSION['user_id'] = $fetch['id'];
+
+
+                    header("location: ".APPURL."");
                 }
             }
         }
 
         //starting session
-        public function starttingSession() {
+        public function startingSession() {
             session_start();
         }
 

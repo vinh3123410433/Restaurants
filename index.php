@@ -1,7 +1,6 @@
 
-<?php require "config/config.php"; ?>
-<?php require "libs/App.php"; ?>
-<?php require "includes/header.php"; ?>
+<?php require (__DIR__ ."/libs/App.php"); ?>
+<?php require (__DIR__ ."/includes/header.php"); ?>
 
 
             <div class="container-fluid py-5 bg-dark hero-header mb-5">
@@ -674,5 +673,5 @@
         <!-- Testimonial End -->
         
 
-<?php require "includes/footer.php"; ?>
+<?php require (__DIR__ ."/includes/footer.php"); ?>
        

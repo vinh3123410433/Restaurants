@@ -19,7 +19,7 @@ if (!defined('PASS')) {
 try {
     $pdo = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, USER, PASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; // Uncomment this line to check connection
+    // echo "Connected successfully"; // Uncomment this line to check connection
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
     exit();

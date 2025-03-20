@@ -1,5 +1,6 @@
 <?php 
-
+    $app = new App();
+    $app->startingSession();
     define("APPURL", "http://localhost/restaurants");
 
 ?>
@@ -65,7 +66,6 @@
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Service</a>
                         <a href="menu.html" class="nav-item nav-link">Menu</a>
-                        <a href="register.php" class="nav-item nav-link">Register</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -75,6 +75,21 @@
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <?php if(isset($_SESSION['username'])): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo $_SESSION['username']; ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <?php else: ?>
+                        <a href="auth/register.php" class="nav-item nav-link">Register</a>
+                        <a href="auth/login.php" class="nav-item nav-link">Login</a>
+                        <?php endif; ?>
                     </div>
                     <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
