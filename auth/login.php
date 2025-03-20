@@ -1,31 +1,33 @@
 
 <?php require (__DIR__ ."/../libs/App.php"); ?>
-
+<?php require (__DIR__ ."/../config/config.php"); ?>
+<?php require (__DIR__ ."/../includes/header.php"); ?>
 
 <?php
 $app = new App;
+$app->validateSession();
 
-if(isset($_POST["submit"])) {
 
+
+if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $query = "SELECT * FROM users WHERE email = '$email'";
+    $query = "SELECT * FROM users WHERE email = :email";
     $data = [
-        ":email"=> $email,
-        ":password"=> $password,
+        ":email" => $email,
+        ":password" => $password,
     ];
 
     $path = "http://localhost/restaurants";
 
-
-    $app->register( query: $query, arr: $arr, path: $path); 
+    try {
+        $app->login($query, $data, $path);
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
 }
-
 ?>
-
-<?php require (__DIR__ ."/../includes/header.php"); ?>
-
 
 <div class="container-fluid py-5 bg-dark hero-header mb-5">
     <div class="container text-center my-5 pt-5 pb-4">
@@ -53,4 +55,4 @@ if(isset($_POST["submit"])) {
 </div>
 
 
-<?php require "../includes/footer.php"; ?>
+<?php require (__DIR__ ."/../includes/footer.php"); ?>

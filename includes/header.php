@@ -1,9 +1,10 @@
 <?php 
-    $app = new App();
+    $app = new App;
     $app->startingSession();
-    define("APPURL", "http://localhost/restaurants");
-
 ?>
+    <?php define("APPURL", "http://localhost/restaurants"); ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +76,10 @@
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
+
                         <?php if(isset($_SESSION['username'])): ?>
+
+                        <a href="cart.html" class="nav-item nav-link">Cart</a>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo $_SESSION['username']; ?>
@@ -83,15 +87,14 @@
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="<?php echo APPURL; ?>/auth/Logout.php">Logout</a></li>
                             </ul>
                         </li>
                         <?php else: ?>
-                        <a href="auth/register.php" class="nav-item nav-link">Register</a>
-                        <a href="auth/login.php" class="nav-item nav-link">Login</a>
+                        <a href="<?php echo APPURL;?>/auth/register.php" class="nav-item nav-link">Register</a>
+                        <a href="<?php echo APPURL;?>/auth/login.php" class="nav-item nav-link">Login</a>
                         <?php endif; ?>
                     </div>
-                    <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
                 </div>
             </nav>
         </div>

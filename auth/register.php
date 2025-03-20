@@ -1,9 +1,13 @@
 
 <?php require (__DIR__ ."/../libs/App.php"); ?>
+<?php require (__DIR__ ."/../config/config.php"); ?>
 <?php require (__DIR__ ."/../includes/header.php"); ?>
+
 <?php 
 
     $app = new App;
+    $app->validateSession();
+
 
     if(isset($_POST["submit"])) {
         $username = $_POST["username"];
@@ -24,6 +28,7 @@
     }
 
 ?>
+
 
 <div class="container-fluid py-5 bg-dark hero-header mb-5">
     <div class="container text-center my-5 pt-5 pb-4">
@@ -54,7 +59,7 @@
     </form>
 </div>
 
-<?php require "../includes/footer.php"; ?>
+<?php require (__DIR__ ."/../includes/footer.php"); ?>
 
 
 

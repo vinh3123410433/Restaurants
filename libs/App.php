@@ -105,7 +105,7 @@
             try {
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute($arr);
-                header("Location: " . $path);
+                echo "<script>window.location.href='".$path."'</script>" ;
                 exit();
             } catch (PDOException $e) {
                 throw new Exception("Database error: " . $e->getMessage());
@@ -115,25 +115,24 @@
 
 
         public function login($query, $data, $path) {
-            //email
+            try {
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([':email' => $data[':email']]);
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+                if ($user && password_verify($data[':password'], $user['password'])) {
+                    // Start session and set session variables
 
-            $login_user = $this->pdo->query($query);
-            $login_user->execute();
-
-            $fetch = $login_user->fetch(PDO::FETCH_ASSOC);
-
-            if($login_user->rowCount() > 0){
-                
-                if(password_verify($data['password'], $fetch['password'])){
-                    //start session variables
-
-                    $_SESSION['email'] = $fetch['email'];
-                    $_SESSION['username'] = $fetch['username'];
-                    $_SESSION['user_id'] = $fetch['id'];
-
-
-                    header("location: ".APPURL."");
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['email'] = $user['email'];
+                    $_SESSION['user_id'] = $user['id'];
+                    echo "<script>window.location.href='".$path."'</script>" ;
+                    exit();
+                } else {
+                    echo "Invalid email or password";
                 }
+            } catch (PDOException $e) {
+                throw new Exception("Database error: " . $e->getMessage());
             }
         }
 
@@ -143,9 +142,9 @@
         }
 
         //validating sessions
-        public function valiateSession($path) {
-            if(isset($_SESSION["id"])) {
-                header("location:".$path."");
+        public function validateSession() {
+            if(isset($_SESSION["user_id"])) {
+                echo "<script>window.location.href='".APPURL."'</script>";
             } 
         }
     }
