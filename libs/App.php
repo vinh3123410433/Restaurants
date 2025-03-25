@@ -57,6 +57,13 @@
             }
         }
 
+        public function validateCart($q) {
+            $rows = $this->pdo->query($q);
+            $rows->execute();
+            $count = $rows->rowCount();
+            return $count;
+        }
+
 
         //insert query
         public function insert($query, $arr, $path) {
@@ -66,7 +73,7 @@
                 $insest_record = $this->pdo->prepare($query);
                 $insest_record->execute($arr);
 
-                header("location: ".$path."");
+                echo "<script>window.location.href='".$path."'</script>";
             }
         }
 
