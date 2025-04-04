@@ -20,7 +20,7 @@
 
 
         public function connect() {
-            $this->link = new PDO("mysql:host=$this->host; mdbname=$this->dbname", $this->user, $this->pass);
+            $this->pdo = new PDO("mysql:host=$this->host; mdbname=$this->dbname", $this->user, $this->pass);
 
             // if($this->link) {
             //     echo "Connected";
@@ -93,15 +93,15 @@
 
         //delete query
         public function delete($query, $path) {
-            $delete_record = $this->pdo->prepare($query);
+            $delete_record = $this->pdo->query($query);
             $delete_record->execute();
 
-            header("location: ".$path."");
+            echo "<script>window.location.href='".$path."'</script>";
             
         }
 
         public function validate($arr){
-            if(in_array("",haystack: $arr)){
+            if(in_array("", $arr)){
                 echo "empty";
             }
         }
