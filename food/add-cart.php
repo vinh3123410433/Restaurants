@@ -52,8 +52,8 @@ if(isset($_POST["submit"])) {
         <h1 class="display-3 text-white mb-3 animated slideInDown"><?php echo $one->name;?></h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Cart</li>
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page"><?php echo $one->name;?></li>
             </ol>
         </nav>
     </div>
@@ -87,9 +87,9 @@ if(isset($_POST["submit"])) {
                     <input type="hidden" name="image" value="<?php echo $one->image;?>">
                     <input type="hidden" name="price" value="<?php echo $one->price;?>">
                     <?php if($count > 0) : ?>
-                        <button name="submit" type="submit" class="btn btn-primary py-3 px-5 mt-2" disabled>Added To Cart</button>
+                        <button name="submit" type="submit" class="btn btn-primary py-3 px-5 mt-2" disabled>Đã được thêm vào giỏ </button>
                     <?php else: ?>
-                        <button name="submit" type="submit" class="btn btn-primary py-3 px-5 mt-2">Add To Cart</button>
+                        <button name="submit" type="submit" class="btn btn-primary py-3 px-5 mt-2">Thêm vào giỏ</button>
                     <?php endif; ?>
                 </form>
             </div>

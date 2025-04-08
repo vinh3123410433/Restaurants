@@ -32,30 +32,30 @@
 
 <div class="container-fluid py-5 bg-dark hero-header mb-5">
     <div class="container text-center my-5 pt-5 pb-4">
-        <h1 class="display-3 text-white mb-3 animated slideInDown">Registeration</h1>
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Đăng ký</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Register</li>
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Đăng ký</li>
             </ol>
         </nav>
     </div>
 </div>
 
 <div class="register-container mt-5">
-    <h5 class="register-title">Register</h5>
-    <h2>Register for a new user</h2>
+    <h5 class="register-title">Đăng ký</h5>
+    <h2>Đăng ký tài khoản mới</h2>
     <form method="POST" action="register.php">
         <div class="mb-3">
-            <input name="username" type="text" class="form-control" placeholder="Username" required>
+            <input name="username" type="text" class="form-control" placeholder="Tài khoản" required>
         </div>
         <div class="mb-3">
-            <input name="email" type="email" class="form-control" placeholder="Your Email" required>
+            <input name="email" type="email" class="form-control" placeholder="Email" required>
         </div>
         <div class="mb-3">
-            <input name="password" type="password" class="form-control" placeholder="Password" required>
+            <input name="password" type="password" class="form-control" placeholder="Mật khẩu" required>
         </div>
-        <button name="submit" type="submit" class="btn btn-custom w-100">REGISTER</button>
+        <button name="submit" type="submit" class="btn btn-custom w-100">Đăng ký</button>
     </form>
 </div>
 
