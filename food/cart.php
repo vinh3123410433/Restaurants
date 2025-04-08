@@ -12,7 +12,7 @@
 
     if(isset($_POST["submit"])) {
         $_SESSION['total_price'] = $cart_price->all_price;
-        echo "<script>window.location.href='".APPURL."/food/checkout.php'</script>";
+        echo "<script>window.location.href='checkout.php'</script>";
     }
 ?>
 
@@ -57,7 +57,7 @@
         <div class="position-relative mx-auto" style = "max-width: 400px; padding-left: 679px;"></div>
         <p style = "margin-left: -7px" class="w-19 py-3 ps-4 pr-5" type = "text">Total: $<?php echo $cart_price->all_price ?> </p>
         <form method = "POST" action="cart.php">
-            <button type = "button" name = "submit" type = "submit" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">check out</button>
+            <button name = "submit" type = "submit" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">check out</button>
         </form>
     </div>
 </div>

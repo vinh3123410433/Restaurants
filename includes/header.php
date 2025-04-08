@@ -54,7 +54,7 @@
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
+                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Mộc Mộc Quán</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -62,23 +62,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="<?php echo APPURL;?>/index.php" class="nav-item nav-link active">Home</a>
-                        <a href="<?php echo APPURL;?>/about.html" class="nav-item nav-link">About</a>
-                        <a href="<?php echo APPURL;?>/service.html" class="nav-item nav-link">Service</a>
-                        <a href="<?php echo APPURL;?>/menu.html" class="nav-item nav-link">Menu</a>
+                        <a href="<?php echo APPURL;?>/index.php" class="nav-item nav-link active">Trang chủ</a>
+                        <a href="<?php echo APPURL;?>/about.php" class="nav-item nav-link">Về chúng tôi</a>
+                        <a href="<?php echo APPURL;?>/service.php" class="nav-item nav-link">Dịch vụ</a>
+                        <a href="<?php echo APPURL;?>/menu.php" class="nav-item nav-link">Menu</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
-                                <a href="booking.html" class="dropdown-item">Booking</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="booking.php" class="dropdown-item">Booking</a>
+                                <a href="team.php" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="<?php echo APPURL;?>/contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="<?php echo APPURL;?>/contact.php" class="nav-item nav-link">Liên Hệ</a>
 
                         <?php if(isset($_SESSION['username'])): ?>
 
-                        <a href="<?php echo APPURL; ?>/food/cart.php" class="nav-item nav-link">Cart</a>
+                        <a href="<?php echo APPURL; ?>/food/cart.php" class="nav-item nav-link">Giỏ Hàng</a>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo $_SESSION['username']; ?>
@@ -86,12 +86,12 @@
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="<?php echo APPURL; ?>/auth/Logout.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="<?php echo APPURL; ?>/auth/Logout.php">Đăng xuất</a></li>
                             </ul>
                         </li>
                         <?php else: ?>
-                        <a href="<?php echo APPURL;?>/auth/register.php" class="nav-item nav-link">Register</a>
-                        <a href="<?php echo APPURL;?>/auth/login.php" class="nav-item nav-link">Login</a>
+                        <a href="<?php echo APPURL;?>/auth/register.php" class="nav-item nav-link">Đăng ký</a>
+                        <a href="<?php echo APPURL;?>/auth/login.php" class="nav-item nav-link">Đăng nhập</a>
                         <?php endif; ?>
                     </div>
                 </div>
