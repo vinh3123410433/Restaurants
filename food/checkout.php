@@ -1,37 +1,50 @@
+
+
 <?php require (__DIR__ ."/../libs/App.php"); ?>
 <?php require (__DIR__ ."/../config/config.php"); ?>
 <?php require (__DIR__ ."/../includes/header.php"); ?>
+<?php
+
+    if(!isset($_SERVER['HTTP_REFERER'])) {
+        echo "<script>window.location.href='".APPURL."'</script>";
+        exit;
+    }
+?>
+
+
+
+
 
 <?php 
     $app = new App;
 
 
-    if(isset($_POST["submit"])) {
+    if(isset($_POST[""])) {
         $name = $_POST["name"];
-        $email = $_POST["email"];
-        $town = $_POST["town"];
-        $country = $_POST["country"];
-        $zipcode = $_POST["zipcode"];
         $phone_number = $_POST["phone_number"];
         $address = $_POST["address"];
+        $detail = $_POST["detail"];
         $total_price = $_SESSION['total_price'];
         $user_id = $_SESSION["user_id"];
     
     
-        $query = "INSERT INTO orders (name, email, town, country, zipcode, phone_number, address, total_price, user_id) VALUES (:name, :email, :town, :country, :zipcode, :phone_number, :address, :total_price, :user_id)";
+        $query = "INSERT INTO orders (name, phone_number, address, detail, total_price, user_id) VALUES (:name, :phone_number, :address, :detail, :total_price, :user_id)";
         $arr = [
             ":name"=> $name,
-            ":email"=> $email,
-            ":town"=> $town,
-            ":country"=> $country,
-            ":zipcode"=> $zipcode,
             ":phone_number"=> $phone_number,
             ":address"=> $address,
+            ":detail"=> $detail,
             ":total_price"=> $total_price,
             ":user_id"=> $user_id
         ];
     
-        $path = "pay.php";
+        if ($_POST["submit"] === "qr") {
+            $path = "qr.php"; // Chuyển hướng đến QR
+        } elseif ($_POST["submit"] === "atm") {
+            $path = "atm.php"; // Chuyển hướng đến ATM
+        }
+        
+
     
     
         $app->insert($query, $arr, $path); 
@@ -61,48 +74,39 @@
                 <div class="row g-3">
                     <div class="col-md-12">
                         <div class="form-floading">
+                            
                             <input type="text" name="name" id="name" class="form-control">
                             <label for="text">Họ và tên</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-floading">
-                            <input type="text" name="email" id="email" class="form-control">
-                            <label for="text">Email</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floading">
-                            <input type="text" name="town" id="town" class="form-control">
-                            <label for="text">Thành phố</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floading">
-                            <input type="text" name="country" id="country" class="form-control">
-                            <label for="text">Quốc gia</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floading">
-                            <input type="text" name="zipcode" id="zipcode" class="form-control">
-                            <label for="text">Zipcode</label>
-                        </div>
-                    </div>
                     <div class="col-md-12">
                         <div class="form-floading">
+                            
                             <input type="text" name="phone_number" id="phone_number" class="form-control">
                             <label for="text">Số điện thoại</label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-floading">
-                            <textarea type="text" name="address" id="address" class="form-control"></textarea>
+                            
+                            <input type="text" name="address" id="address" class="form-control"></textarea>
                             <label for="message">Địa chỉ</label>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Thanh toán và đặt hàng</button>
+                    <div class="col-md-12">
+                        <div class="form-floading">
+                            
+                            <textarea type="text" name="detail" id="detail" class="form-control"></textarea>
+                            <label for="message">Chi tiết</label>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3 mt-3">
+                        <form class="col-md-6" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="qr.php">
+                            <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Thanh toán qua mã QR</button>
+                        </form>
+                        <form class="col-md-6" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="atm.php">
+                            <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Thanh toán qua ATM</button>
+                        </form>
                     </div>
                 </div>
             </form>

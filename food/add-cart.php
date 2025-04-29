@@ -11,48 +11,51 @@ if(isset($_GET['id'])) {
     $one = $app->selectOne($query);
    
 
-}
-
-if(isset($_SESSION['user_id'])) {
-    $q = "SELECT * FROM cart WHERE item_id = '$id' AND user_id = '$_SESSION[user_id]'";
-    $count = $app->validateCart($q);
-
-}
-
-    
-if(isset($_POST["submit"])) {
-    $item_id = $_POST["item_id"];
-    $name = $_POST["name"];
-    $price = $_POST["price"];
-    $image = $_POST["image"];
-    $user_id = $_SESSION["user_id"];
 
 
-    $query = "INSERT INTO cart (item_id, name, price, image, user_id) VALUES (:item_id, :name, :price, :image, :user_id)";
-    $arr = [
-        ":item_id" => $item_id,
-        ":name"=> $name,
-        ":price"=> $price,
-        "image"=> $image,
-        "user_id"=> $user_id,
-    ];
+    if(isset($_SESSION['user_id'])) {
+        $q = "SELECT * FROM cart WHERE item_id = '$id' AND user_id = '$_SESSION[user_id]'";
+        $count = $app->validateCart($q);
 
-    $path = "cart.php";
+    }
 
 
-    $app->insert( query: $query, arr: $arr, path: $path); 
+    if(isset($_POST["submit"])) {
+        $item_id = $_POST["item_id"];
+        $name = $_POST["name"];
+        $price = $_POST["price"];
+        $image = $_POST["image"];
+        $user_id = $_SESSION["user_id"];
+
+
+        $query = "INSERT INTO cart (item_id, name, price, image, user_id) VALUES (:item_id, :name, :price, :image, :user_id)";
+        $arr = [
+            ":item_id" => $item_id,
+            ":name"=> $name,
+            ":price"=> $price,
+            "image"=> $image,
+            "user_id"=> $user_id,
+        ];
+
+        $path = "cart.php";
+
+
+        $app->insert( query: $query, arr: $arr, path: $path); 
+    }      
+
+}  else{
+echo "<script>window.location.href='".APPURL."/404.php'</script>";
 }
 
 
 ?>
-
 
 <div class="container-fluid py-5 bg-dark hero-header mb-5">
     <div class="container text-center my-5 pt-5 pb-4">
         <h1 class="display-3 text-white mb-3 animated slideInDown"><?php echo $one->name;?></h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center text-uppercase">
-                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo APPURL;?>/index.php">Trang chủ</a></li>
                 <li class="breadcrumb-item text-white active" aria-current="page"><?php echo $one->name;?></li>
             </ol>
         </nav>
@@ -77,7 +80,7 @@ if(isset($_POST["submit"])) {
                 <div class="row g-4 mb-4">
                     <div class="col-sm-6">
                         <div class="d-flex align-item-center border-start border-5 border-primary px-3">
-                            <h3>Price: <?php echo $one->price;?></h3>
+                            <h3>Price: <?php echo $one->price;?> VNĐ</h3>
                         </div>
                     </div>
                 </div>

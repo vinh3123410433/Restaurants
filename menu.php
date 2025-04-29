@@ -87,7 +87,7 @@
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span><?php echo $meal_1->name;?></span>
-                                                <span class="text-primary"><?php echo $meal_1->price;?></span>
+                                                <span class="text-primary"><?php echo $meal_1->price;?>VNĐ</span>
                                             </h5>
                                             <small class="fst-italic"><?php echo $meal_1->description;?></small>
                                             <a type="button" href="<?php echo APPURL ?>/food/add-cart.php?id=<?php echo $meal_1->id; ?>" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">view</a>
@@ -106,7 +106,7 @@
                                             <div class="w-100 d-flex flex-column text-start ps-4">
                                                 <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                     <span><?php echo $meal_2->name;?></span>
-                                                    <span class="text-primary"><?php echo $meal_2->price;?></span>
+                                                    <span class="text-primary"><?php echo $meal_2->price;?>VNĐ</span>
                                                 </h5>
                                                 <small class="fst-italic"><?php echo $meal_2->description;?></small>
                                                 <a type="button" href="<?php echo APPURL ?>/food/add-cart.php?id=<?php echo $meal_2->id; ?>" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">view</a>
@@ -125,7 +125,7 @@
                                             <div class="w-100 d-flex flex-column text-start ps-4">
                                                 <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                     <span><?php echo $meal_3->name;?></span>
-                                                    <span class="text-primary"><?php echo $meal_3->price;?></span>
+                                                    <span class="text-primary"><?php echo $meal_3->price;?>VNĐ</span>
                                                 </h5>
                                                 <small class="fst-italic"><?php echo $meal_3->description;?></small>
                                                 <a type="button" href="<?php echo APPURL ?>/food/add-cart.php?id=<?php echo $meal_3->id; ?>" class="btn btn-primary py-2 top-0 end-0 mt-2 me-2">view</a>
