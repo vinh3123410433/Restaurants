@@ -19,7 +19,7 @@
     $app = new App;
 
 
-    if(isset($_POST[""])) {
+    if(isset($_POST["submit"])) {
         $name = $_POST["name"];
         $phone_number = $_POST["phone_number"];
         $address = $_POST["address"];
@@ -38,11 +38,6 @@
             ":user_id"=> $user_id
         ];
     
-        if ($_POST["submit"] === "qr") {
-            $path = "qr.php"; // Chuyển hướng đến QR
-        } elseif ($_POST["submit"] === "atm") {
-            $path = "atm.php"; // Chuyển hướng đến ATM
-        }
         
 
     
@@ -100,14 +95,21 @@
                             <label for="message">Chi tiết</label>
                         </div>
                     </div>
-                    <div class="d-flex gap-3 mt-3">
-                        <form class="col-md-6" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="qr.php">
-                            <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Thanh toán qua mã QR</button>
+                    
+                    <div class="col-12">
+                        <!-- <form class="col-md-6" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="qr.php">
+                            <input type="submit" name="momo" value="Thanh toán MOMO QR" class="btn btn-primary w-100 py-3" >
+                            <button name="momo" class="btn btn-primary w-100 py-3" type="submit">Thanh toán MOMO QR</button>
                         </form>
                         <form class="col-md-6" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="atm.php">
-                            <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Thanh toán qua ATM</button>
-                        </form>
+                            <input type="submit" name="momo" value="Thanh toán MOMO ATM" class="btn btn-primary w-100 py-3" >
+                            <button name="momo" class="btn btn-primary w-100 py-3" type="submit">Thanh toán MOMO ATM</button>
+                        </form> -->
+                        <button name="submit" class="btn btn-primary w-100 py-3" type="submit">order</button>
                     </div>
+
+                    
+                    
                 </div>
             </form>
         

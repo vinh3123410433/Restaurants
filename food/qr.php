@@ -43,8 +43,8 @@ $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua mã QR MoMo";
 $amount = $_SESSION["total_price"];
 $orderId = time() ."";
-$redirectUrl = "http://localhost/restaurants/food/cart.php";
-$ipnUrl = "http://localhost/restaurants/food/cart.php";
+$redirectUrl = "http://localhost/restaurants/food/delete_cart.php";
+$ipnUrl = "http://localhost/restaurants/food/delete_cart.php";
 $extraData = "";
 
 
@@ -74,11 +74,13 @@ $jsonResult = json_decode($result, true);  // decode json
 //Just a example, please check more in there
 
 
-if (isset($jsonResult['payUrl'])) {
-    header('Location: ' . $jsonResult['payUrl']);
-} else {
-    echo "Lỗi: Không thể tạo URL thanh toán. Vui lòng kiểm tra lại.";
-    var_dump($jsonResult); // Hiển thị phản hồi để kiểm tra lỗi
-}
+// if (isset($jsonResult['payUrl'])) {
+//     header('Location: ' . $jsonResult['payUrl']);
+// } else {
+//     echo "Lỗi: Không thể tạo URL thanh toán. Vui lòng kiểm tra lại.";
+//     var_dump($jsonResult); // Hiển thị phản hồi để kiểm tra lỗi
+// }
+
+header('Location: ' . $jsonResult['payUrl']);
 
 ?>

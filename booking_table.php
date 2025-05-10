@@ -3,19 +3,24 @@
 <?php require (__DIR__ ."/config/config.php"); ?>
 <?php
 
+if(!isset($_SERVER['HTTP_REFERER'])) {
+    echo "<script>window.location.href='".APPURL."'</script>";
+    exit;
+}
+
 if(isset($_POST["submit"])) {
     $name = $_POST["name"];
-    $phone_number = $_POST["phonge_number"];
+    $phone_number = $_POST["phone_number"];
     $date_booking = $_POST["date_booking"];
     $num_people = $_POST["num_people"];
-    $special_request = $_SESSION["special_request"];
-    $status = $_POST["status"];
-    $user_id = $_POST["user_id"];
+    $special_request = $_POST["special_request"];
+    $status = "Pending";
+    $user_id = $_SESSION["user_id"];
 
-    if($date_booking > date("y/m/d")){
+    if($date_booking > date("m/d/Y h:i:sa")){
 
 
-    $query = "INSERT INTO cart (name, phone_number, date_booking, special_request, num_people, status, user_id) VALUES (:name, :phone_number, :date_booking, :num_people, :special_request, :status, :user_id)";
+    $query = "INSERT INTO bookings (name, phone_number, date_booking, num_people, special_request, status, user_id) VALUES (:name, :phone_number, :date_booking, :num_people, :special_request, :status, :user_id)";
     $arr = [
         ":name" => $name,
         ":phone_number"=> $phone_number,
@@ -32,6 +37,8 @@ if(isset($_POST["submit"])) {
     $app->insert( query: $query, arr: $arr, path: $path); 
     }else{
         echo "<script>alert('Ngày đặt không hợp lệ')</script>";
+        echo "<script>window.location.href='index.php'</script>";
+        
     }
 }  
 

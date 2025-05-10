@@ -240,8 +240,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input name="email" type="email" class="form-control" id="email" placeholder="Your Email">
-                                        <label for="email">Email</label>
+                                        <input name="phone_number" type="phone_number" class="form-control" id="phone_number" placeholder="Số điện thoại">
+                                        <label for="phone_number">Số điện thoại</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -266,9 +266,13 @@
                                         <label for="message">Yêu cầu</label>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
-                                </div>
+                                <?php if(isset($_SESSION['user_id'])): ?>
+                                    <div class="col-12">
+                                        <button name="submit" class="btn btn-primary w-100 py-3" type="submit">Đặt Ngay</button>
+                                    </div>
+                                <?php else: ?>
+                                    <p>Vui lòng đăng nhập để có thể đặt bàn</p>
+                                <?php endif; ?>
                             </div>
                         </form>
                     </div>

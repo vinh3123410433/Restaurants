@@ -53,7 +53,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="<?php echo APPURL;?>/index.php" class="navbar-brand p-0">
+                <a href="<?php echo APPURL;?>" class="navbar-brand p-0">
                     <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Mộc Mộc Quán</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
@@ -62,18 +62,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="<?php echo APPURL;?>/index.php" class="nav-item nav-link active">Trang chủ</a>
+                        <a href="<?php echo APPURL;?>" class="nav-item nav-link active">Trang chủ</a>
                         <a href="<?php echo APPURL;?>/about.php" class="nav-item nav-link">Về chúng tôi</a>
                         <a href="<?php echo APPURL;?>/service.php" class="nav-item nav-link">Dịch vụ</a>
                         <a href="<?php echo APPURL;?>/menu.php" class="nav-item nav-link">Menu</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="booking.php" class="dropdown-item">Booking</a>
-                                <a href="team.php" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                            </div>
-                        </div>
                         <a href="<?php echo APPURL;?>/contact.php" class="nav-item nav-link">Liên Hệ</a>
 
                         <?php if(isset($_SESSION['username'])): ?>
@@ -84,8 +76,8 @@
                                 <?php echo $_SESSION['username']; ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="<?php echo APPURL;?>/users/bookings.php">Booking</a></li>
+                                <li><a class="dropdown-item" href="<?php echo APPURL;?>/users/orders.php">Order</a></li>
                                 <li><a class="dropdown-item" href="<?php echo APPURL; ?>/auth/Logout.php">Đăng xuất</a></li>
                             </ul>
                         </li>
