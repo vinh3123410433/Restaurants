@@ -13,7 +13,7 @@ if (!defined('USER')) {
 }
 
 if (!defined('PASS')) {
-    define('PASS', '');
+    define('PASS', '123456'); // Mật khẩu MySQL
 }
 
 try {
